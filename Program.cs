@@ -31,12 +31,12 @@ namespace Decoder
 
                         int lastIdx = GetLastNonzeroIndex(combined);
                         var stats = GetStats(combined, lastIdx);
-                        Console.WriteLine(BytesToHex(combined.AsSpan(0, lastIdx)));
+                        Console.WriteLine(BytesToHex(combined.AsSpan(0, lastIdx + 1)));
                         Console.WriteLine($"Stats: Lowest={stats.lowest}, Highest={stats.highest}");
                         sb.Clear();
                         if (stats.lowest >= 32 && stats.highest <= 126)
                         {
-                            foreach (byte b in combined.AsSpan(0, lastIdx))
+                            foreach (byte b in combined.AsSpan(0, lastIdx + 1))
                             {
                                 sb.Append((char)b);
                             }
